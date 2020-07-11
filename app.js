@@ -9,11 +9,12 @@ const postRoute = require('./routes/post');
 //Middleware
 app.use(bodyParser.json());
 app.use(cors())
+app.use(express.static('public'));
 app.use('/', postRoute);
 
-app.get('/', (req, res) => {
-    res.json('You are on home')
-})
+// app.get('/', (req, res) => {
+//     res.json('You are on home')
+// })
 
 // Mongo Atlas Connection 
 mongoose.connect(
