@@ -5,6 +5,17 @@ body {
     font-size: large;
 }
 
+#recorde-button {
+    padding: 5%;
+    font-family: monospace;
+    font-size: large;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+}
+
 #checkin {
     text-align: center;
     padding: 1%;
@@ -16,6 +27,7 @@ body {
 
 #checkin-button {
     padding: 5%;
+    font-family: monospace;
     font-size: large;
     width: 100%;
     background-color: deepskyblue;
