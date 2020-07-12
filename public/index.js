@@ -1,3 +1,9 @@
+var mic
+
+function setup() {
+    mic = new p5.AudioIn()
+}
+// geolocation
 if ("geolocation" in navigator) {
     console.log('geolocation is available')
     navigator.geolocation.getCurrentPosition((position) => {
@@ -24,7 +30,7 @@ if ("geolocation" in navigator) {
         }
         const checkInButton = document.getElementById('checkin-button');
         checkInButton.onclick = function checkIn() {
-            fetch('https://soundcheckin.herokuapp.com/' + '/post', options).then(res => {
+            fetch('https://soundcheckin.herokuapp.com' + '/post', options).then(res => {
                 console.log(data)
                 document.getElementById('done').textContent = 'DONE'
             })
