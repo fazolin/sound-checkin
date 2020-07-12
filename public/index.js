@@ -24,7 +24,7 @@ if ("geolocation" in navigator) {
         }
         const checkInButton = document.getElementById('checkin-button');
         checkInButton.onclick = function checkIn() {
-            fetch('https://apiada.herokuapp.com' + '/post', options).then(res => {
+            fetch('https://soundcheckin.herokuapp.com/' + '/post', options).then(res => {
                 console.log(data)
                 document.getElementById('done').textContent = 'DONE'
             })
