@@ -24,13 +24,13 @@ if ("geolocation" in navigator) {
             },
             body: JSON.stringify(data)
         }
-        const recordeButton = document.getElementById('recorde-button');
+        const recordeButton = document.getElementById('recorde-button')
         recordeButton.onclick = () => {
             recorde()
         }
 
 
-        const checkInButton = document.getElementById('checkin-button');
+        const checkInButton = document.getElementById('checkin-button')
         checkInButton.onclick = function checkIn() {
             fetch('https://soundcheckin.herokuapp.com' + '/post', options).then(res => {
                 console.log(data)
@@ -46,30 +46,34 @@ if ("geolocation" in navigator) {
 
 // audio record and draw
 
-let mic, recorder, soundFile;
+let mic, recorder, soundFile
 
 
-let state = 0; // mousePress will increment from Record, to Stop, to Play
+let state = 0 // mousePress will increment from Record, to Stop, to Play
 
 function setup() {
+    if (windowWidth < 800) {
+        var myCanvas = createCanvas(windowWidth / 2, windowHeight / 2)
+    } else {
+        var myCanvas = createCanvas(windowWidth / 3, windowHeight / 3)
+    }
 
-    var myCanvas = createCanvas(windowWidth / 2, windowHeight / 2);
     myCanvas.parent("canvas")
 
     // create an audio in
-    mic = new p5.AudioIn();
+    mic = new p5.AudioIn()
 
     // users must manually enable their browser microphone for recording to work properly!
-    mic.start();
+    mic.start()
 
     // create a sound recorder
-    recorder = new p5.SoundRecorder();
+    recorder = new p5.SoundRecorder()
 
     // connect the mic to the recorder
-    recorder.setInput(mic);
+    recorder.setInput(mic)
 
     // create an empty sound file that we will use to playback the recording
-    soundFile = new p5.SoundFile();
+    soundFile = new p5.SoundFile()
 }
 
 function draw() {
@@ -86,7 +90,7 @@ function draw() {
 
 function mousePressed() {
     if (getAudioContext().state !== 'running') {
-        getAudioContext().resume();
+        getAudioContext().resume()
     }
 }
 
@@ -95,28 +99,33 @@ function recorde() {
         // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
     if (state === 0 && mic.enabled) {
 
-        recorder.record(soundFile);
+        recorder.record(soundFile)
         document.getElementById('recorde-button').textContent = 'Recording now! Click to stop.'
-        document.getElementById('recorde-button').style = 'background-color: red;'
+        document.getElementById('recorde-button').style = 'background-color: red'
 
-        state++;
+        state++
     } else if (state === 1) {
-        recorder.stop(); // stop recorder, and send the result to soundFile
+        recorder.stop() // stop recorder, and send the result to soundFile
 
-        // background(0, 255, 0);
+        // background(0, 255, 0)
         document.getElementById('recorde-button').textContent = 'Recording stopped. Click to play '
-        document.getElementById('recorde-button').style = 'background-color: green;'
+        document.getElementById('recorde-button').style = 'background-color: green'
 
-        state++;
+        state++
     } else if (state === 2) {
-        soundFile.play(); // play the result!
+        soundFile.play() // play the result!
 
         document.getElementById('recorde-button').textContent = 'Click to new recording '
-            // saveSound(soundFile, 'mySound.wav'); // save file
-        state = 0;
+            // saveSound(soundFile, 'mySound.wav') // save file
+        state = 0
     }
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth / 2, windowHeight / 2);
+    if (windowWidth < 800) {
+        resizeCanvas(windowWidth / 2, windowHeight / 2)
+    } else {
+        resizeCanvas(windowWidth / 3, windowHeight / 3)
+    }
+
 }
