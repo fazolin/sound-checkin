@@ -1,6 +1,6 @@
 **SOUND CHECKIN**
 
-temporary url: https://apiada.herokuapp.com/
+temporary url: https://soundcheckin.herokuapp.com/
 
 *to deploy*
 
