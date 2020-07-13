@@ -53,7 +53,7 @@ let state = 0; // mousePress will increment from Record, to Stop, to Play
 
 function setup() {
 
-    var myCanvas = createCanvas(400, 400);
+    var myCanvas = createCanvas(windowWidth / 2, windowHeight / 2);
     myCanvas.parent("canvas")
 
     // create an audio in
@@ -74,11 +74,14 @@ function setup() {
 
 function draw() {
 
-    clear()
+    // clear()
+    background(255, 20)
+
     let vol = mic.getLevel()
+
     noStroke()
-    fill(255, 0, 0)
-    ellipse(width / 2, height / 2, vol * 10000, vol * 10000)
+    fill(random(255), random(255), random(255))
+    ellipse(width / 2, height / 2, vol * 20000, vol * 20000)
 }
 
 function mousePressed() {
@@ -112,4 +115,8 @@ function recorde() {
             // saveSound(soundFile, 'mySound.wav'); // save file
         state = 0;
     }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth / 2, windowHeight / 2);
 }
