@@ -5,7 +5,7 @@ body {
     font-size: large;
 }
 
-#recorde-button {
+#record-button {
     padding: 5%;
     font-family: monospace;
     font-size: large;
@@ -35,4 +35,9 @@ body {
     color: white;
     border-style: none;
     border-radius: 5px;
+    visibility: hidden;
+}
+
+#coordinates {
+    visibility: hidden;
 }

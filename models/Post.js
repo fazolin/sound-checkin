@@ -4,6 +4,9 @@ const PostSchema = mongoose.Schema({
     loc: {
         coordinates: [Number],
     },
+    sound: {
+        type: Buffer
+    },
     date: {
         type: Date,
         default: Date.now

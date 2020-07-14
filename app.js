@@ -6,8 +6,12 @@ const cors = require('cors')
 require('dotenv').config()
 const postRoute = require('./routes/post');
 
+
+
 //Middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+    // app.use(bodyParser.json());
 app.use(cors())
 app.use(express.static('public'));
 app.use('/', postRoute);
